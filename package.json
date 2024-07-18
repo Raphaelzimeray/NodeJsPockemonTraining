@@ -1,0 +1,19 @@
+{
+  "name": "node_pockemon_api",
+  "version": "1.0.0",
+  "description": "An awesome API to learn node js",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Raphael Zimeray",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

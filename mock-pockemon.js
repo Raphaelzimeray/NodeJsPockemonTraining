@@ -106,7 +106,8 @@ const pokemons = [
    picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/037.png",
    types: ["Feu"],
    created: new Date()
-  }
+  },
+  
  ];
 
  module.exports = pokemons

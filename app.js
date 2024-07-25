@@ -2,11 +2,28 @@ const express = require ('express');
 const { success, getUniqueId } = require('./helper.js');
 let pockemons = require('./mock-pockemon');
 const favicon = require('serve-favicon');
+const { Sequelize } = require('sequelize');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const app = express();
 
 const port = 3000;
+
+const sequelize = new Sequelize(
+  'Pokedex',
+  'root',
+  '',
+  {
+    host: 'localhost',
+    port: 3307,
+    dialect: 'mysql',
+    logging: false
+  }
+)
+
+sequelize.authenticate()
+  .then(_ => console.log('La connexion à la base de donnée à bien été établie'))
+  .catch(error => console.error(`Impossible de se connecter à la base de données ${error}`))
 
 app
   .use(favicon(__dirname + '/favicon.ico'))
@@ -60,5 +77,8 @@ app.delete('/api/pockemons/:id', (req, res) => {
   const message = `Le pockemon ${pockemonDeleted.name} a bien été supprimé`;
   res.json(success(message, pockemonDeleted));
 })
+
+
+
 
 app.listen(port, ()=> console.log(`Notre application node est démarée sur ${port}`));

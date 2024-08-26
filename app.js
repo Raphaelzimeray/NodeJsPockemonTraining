@@ -19,10 +19,12 @@ sequelize.initDb()
 // Ici, nous placerons nos futurs points de terminaison
 
 require('./src/routes/findAllPokemons')(app);
+require('./src/routes/findPokemonByPk')(app);
+require('./src/routes/createPokemons')(app);
 
 
 app.listen(port, ()=> console.log(`Notre application node est démarée sur : http://localhost:${port}`));
 
 app.get('/allPockemons', (req, res) => {
-  res.json()
+  res.json(pockemons)
 })

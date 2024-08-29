@@ -21,10 +21,15 @@ sequelize.initDb()
 require('./src/routes/findAllPokemons')(app);
 require('./src/routes/findPokemonByPk')(app);
 require('./src/routes/createPokemons')(app);
+require('./src/routes/updatePokemons')(app);
+require('./src/routes/deletePokemon')(app);
 
+
+// On ajoute la gestion des erreurs 404
+
+app.use(({res}) => {
+  const message = 'Impossible de trouver la ressource demandée ! Vous pouvez essayer une autre URL';
+  res.status(404).json({message});
+});
 
 app.listen(port, ()=> console.log(`Notre application node est démarée sur : http://localhost:${port}`));
-
-app.get('/allPockemons', (req, res) => {
-  res.json(pockemons)
-})
